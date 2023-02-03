@@ -10,9 +10,9 @@ class sideBar(QWidget):
         self.barLayout = QVBoxLayout()
         self.setFixedWidth(150)
 
+        # self.container = QWidget()
         self.buildBar()
-        self.setStyleSheet(sideBarStyle())
-        
+                
     def buildBar(self):
         
         menu = sideBarButton("Menu")
@@ -33,7 +33,17 @@ class sideBar(QWidget):
         self.barLayout.addWidget(unpack)
         self.barLayout.addWidget(settings)
         
-        self.setLayout(self.barLayout)
+        # self.container.setLayout(self.barLayout)
         
+        # self.layoutContainer = QVBoxLayout()
+        # self.container.setStyleSheet(sideBarStyle())
+
+        
+        # self.layoutContainer.addWidget(self.container)
+        
+        # self.setLayout(self.layoutContainer)
+        
+        self.setLayout(self.barLayout)
+                
     
     

@@ -27,11 +27,7 @@ class App(QMainWindow):
         widget.setLayout(self.__mainLayout)
         
         self.setCentralWidget(widget)
-        self.setStyleSheet("""
-                           background-color: gray;
-                           padding: 0;
-                           margin: 0;
-                           """)
+        self.setStyleSheet(defaultBackground())
         
     
     def __sizeSetup(self, x, y, width, height):

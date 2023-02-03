@@ -25,7 +25,6 @@ if __name__ == "__main__":
     # w = App(0, 0, 1710, 1112)
     w.show()
     
-
     
     # Executes event loop.
     app.exec()

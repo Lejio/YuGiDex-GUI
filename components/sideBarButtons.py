@@ -1,4 +1,5 @@
 from PySide6.QtWidgets import QPushButton, QMainWindow
+from components.styles.default import sideBarButtonStyle
 
 class sideBarButton(QPushButton):
     
@@ -7,12 +8,7 @@ class sideBarButton(QPushButton):
         
         self.setText(name)
         # self.clicked.connect(self.fullScreen())
-        self.setStyleSheet("""
-                           border-radius: 10px;
-                           border: 1px solid green;
-                           background-color: #96C9DC;
-                           color: black;
-                           """)
+        self.setStyleSheet(sideBarButtonStyle())
         
     # def fullScreen(self):
         
