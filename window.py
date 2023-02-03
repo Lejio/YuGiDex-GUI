@@ -12,6 +12,7 @@ class App(QMainWindow):
         
         self.mainLayout = QVBoxLayout()
         self.mainLayout.setContentsMargins(0, 0, 0, 0)
+        
         self.toolBarLayout = QVBoxLayout()
         self.mainScreenLayout = QHBoxLayout()
         
