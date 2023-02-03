@@ -21,6 +21,12 @@ if __name__ == "__main__":
     w = App(app_x, app_y, app_width, app_height)
     w.show()
     
+    # "Full" screen on mac
+    # w = App(0, 0, 1710, 1112)
+    w.show()
+    
+
+    
     # Executes event loop.
     app.exec()
 

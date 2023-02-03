@@ -1,5 +1,6 @@
 from PySide6.QtWidgets import QMainWindow, QVBoxLayout, QHBoxLayout, QPushButton, QWidget, QFrame, QLabel
 from components.titleButton import titleButton
+from components.sideBar import sideBar
 
 class App(QMainWindow):
     
@@ -10,6 +11,9 @@ class App(QMainWindow):
         self.currWidth = width
         self.currHeight = height
         self.setMinimumSize(width/2, height/2)
+        
+        # Opens the application in full screen mode.
+        # self.showFullScreen()
         
         self.mainLayout = QVBoxLayout()
         self.mainLayout.setContentsMargins(0, 0, 0, 0)
@@ -45,14 +49,15 @@ class App(QMainWindow):
         appName.setStyleSheet("""
                              border: 1px solid yellow;
                              """)
-        button1 = titleButton("green")
-        button2 = titleButton("yellow")
-        button3 = titleButton("red")
+        green = titleButton("green")
+        
+        yellow = titleButton("yellow")
+        red = titleButton("red")
         
         titleBarLayout.addWidget(appName)
-        titleBarLayout.addWidget(button1)
-        titleBarLayout.addWidget(button2)
-        titleBarLayout.addWidget(button3)
+        titleBarLayout.addWidget(green)
+        titleBarLayout.addWidget(yellow)
+        titleBarLayout.addWidget(red)
         
         # titleBarLayout.setSpacing(10)
         
@@ -72,17 +77,13 @@ class App(QMainWindow):
         # This changes the padding between items in a layout.
         mainSectionLayout.setSpacing(0)
         
-        label1 = QLabel("Menu Bar")
-        label1.setStyleSheet("""
-                             border: 1px solid yellow;
-                             """)
-        label1.setFixedWidth(100)
+        SideBar = sideBar()
         label2 = QLabel("Main Content")
         label2.setStyleSheet("""
                              border: 1px solid yellow;
                              """)
         
-        mainSectionLayout.addWidget(label1)
+        mainSectionLayout.addWidget(SideBar)
         mainSectionLayout.addWidget(label2)
         
         mainSection.setLayout(mainSectionLayout)
