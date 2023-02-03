@@ -49,12 +49,18 @@ class App(QMainWindow):
         appName.setStyleSheet("""
                              border: 1px solid yellow;
                              """)
-        green = titleButton("green")
         
+        # Generating title bar
+        green = titleButton("green")
+        green.clicked.connect(self.fullScreen)
         yellow = titleButton("yellow")
+        yellow.clicked.connect(self.minimizeWindow)
         red = titleButton("red")
+        red.clicked.connect(self.closeProgram)
         
         titleBarLayout.addWidget(appName)
+        
+        
         titleBarLayout.addWidget(green)
         titleBarLayout.addWidget(yellow)
         titleBarLayout.addWidget(red)
@@ -91,6 +97,37 @@ class App(QMainWindow):
         return mainSection
     
     # Resized event ready for experimentation with custom flexbox
-    def resizeEvent(self, event):
-        print("Window has been resized")
-        QMainWindow.resizeEvent(self, event)
+    # def resizeEvent(self, event):
+    #     print("Window has been resized")
+    #     QMainWindow.resizeEvent(self, event)
+    
+    ###############################################################################################
+    # Assigned to the GREEN button. Allows full screening.                                        #
+    ###############################################################################################
+    def fullScreen(self):
+        
+        if not self.isFullScreen():
+            print("Entering full screen.")
+            self.showFullScreen()
+            
+        else:
+            print("Exiting full screen.")
+            self.showNormal()
+    
+    ###############################################################################################
+    # Assigned to the YELLOW button. Allows minimizing.                                           #
+    ###############################################################################################
+    def minimizeWindow(self):
+        
+        print("Minimizing.")
+        self.showMinimized()
+    
+    
+    ###############################################################################################
+    # Assigned to the RED button. Can exit the program.                                           #
+    ###############################################################################################
+    def closeProgram(self):
+        
+        print("Closing program")
+        exit()
+    
