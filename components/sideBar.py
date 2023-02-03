@@ -1,5 +1,7 @@
-from PySide6.QtWidgets import QWidget, QPushButton, QVBoxLayout
+from PySide6.QtWidgets import QWidget, QVBoxLayout
+from PySide6.QtCore import Qt
 from components.sideBarButtons import sideBarButton
+from components.styles.default import sideBarStyle
 
 class sideBar(QWidget):
     
@@ -7,14 +9,13 @@ class sideBar(QWidget):
         super().__init__()
         self.barLayout = QVBoxLayout()
         self.setFixedWidth(150)
-        self.setStyleSheet("""
-                           border: 1px solid yellow;
-                           """)
 
         self.buildBar()
+        self.setStyleSheet(sideBarStyle())
         
     def buildBar(self):
         
+        menu = sideBarButton("Menu")
         home = sideBarButton("Home")
         news = sideBarButton("News")
         search = sideBarButton("Search")
@@ -22,13 +23,9 @@ class sideBar(QWidget):
         unpack = sideBarButton("Unbox")
         settings = sideBarButton("Settings")
         
-        # home = QPushButton("Home")
-        # news = QPushButton("News")
-        # search = QPushButton("Search")
-        # build = QPushButton("Build")
-        # unpack = QPushButton("Unbox")
-        # settings = QPushButton("Settings")
+        self.barLayout.setAlignment(Qt.AlignmentFlag.AlignTop)
         
+        self.barLayout.addWidget(menu)
         self.barLayout.addWidget(home)
         self.barLayout.addWidget(news)
         self.barLayout.addWidget(search)
