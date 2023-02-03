@@ -9,6 +9,7 @@ log.log
 **/testFiles/**/.cache/**
 *.noseids
 .nyc_output
+notes.txt
 .vscode-test
 __pycache__
 npm-debug.log

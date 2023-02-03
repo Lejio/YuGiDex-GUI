@@ -9,12 +9,14 @@ class App(QMainWindow):
         self.setGeometry(x, y, width, height)
         self.currWidth = width
         self.currHeight = height
+        self.setMinimumSize(width/2, height/2)
         
         self.mainLayout = QVBoxLayout()
         self.mainLayout.setContentsMargins(0, 0, 0, 0)
+        self.mainLayout.setSpacing(0)
         
-        self.toolBarLayout = QVBoxLayout()
-        self.mainScreenLayout = QHBoxLayout()
+        # self.toolBarLayout = QVBoxLayout()
+        # self.mainScreenLayout = QHBoxLayout()
         
         titleBar = self.buildTitleBar()
         mainSection = self.buildMainSection()
@@ -37,8 +39,12 @@ class App(QMainWindow):
         
         titleBar = QWidget()
         titleBarLayout = QHBoxLayout()
+        titleBarLayout.setContentsMargins(0, 0, 0, 0)
         
         appName = QLabel("YuGiDex")
+        appName.setStyleSheet("""
+                             border: 1px solid yellow;
+                             """)
         button1 = titleButton("green")
         button2 = titleButton("yellow")
         button3 = titleButton("red")
@@ -48,8 +54,10 @@ class App(QMainWindow):
         titleBarLayout.addWidget(button2)
         titleBarLayout.addWidget(button3)
         
+        # titleBarLayout.setSpacing(10)
+        
         titleBar.setLayout(titleBarLayout)
-        titleBar.setFixedHeight(60)
+        titleBar.setFixedHeight(30)
         titleBar.setStyleSheet("""
                                     background-color: red;
                                     """)
@@ -59,12 +67,20 @@ class App(QMainWindow):
         
         mainSection = QWidget()
         mainSectionLayout = QHBoxLayout()
+        mainSectionLayout.setContentsMargins(0, 0, 0, 0)
+        
+        # This changes the padding between items in a layout.
+        mainSectionLayout.setSpacing(0)
         
         label1 = QLabel("Menu Bar")
         label1.setStyleSheet("""
-                             border: 2px solid yellow;
+                             border: 1px solid yellow;
                              """)
+        label1.setFixedWidth(100)
         label2 = QLabel("Main Content")
+        label2.setStyleSheet("""
+                             border: 1px solid yellow;
+                             """)
         
         mainSectionLayout.addWidget(label1)
         mainSectionLayout.addWidget(label2)
@@ -72,3 +88,8 @@ class App(QMainWindow):
         mainSection.setLayout(mainSectionLayout)
         
         return mainSection
+    
+    # Resized event ready for experimentation with custom flexbox
+    def resizeEvent(self, event):
+        print("Window has been resized")
+        QMainWindow.resizeEvent(self, event)
