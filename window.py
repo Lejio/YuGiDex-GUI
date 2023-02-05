@@ -1,7 +1,15 @@
-from PySide6.QtWidgets import QMainWindow, QVBoxLayout, QHBoxLayout, QWidget, QLabel, QStackedWidget
+from PySide6.QtWidgets import QMainWindow, QVBoxLayout, QHBoxLayout, QWidget, QLabel, QStackedLayout
 from components.titleButton import titleButton
 from components.sideBar import sideBar
 from components.styles.default import *
+# from components.pages.Build.build import build
+# from components.pages.Home.home import home
+# from components.pages.News.news import news
+# from components.pages.Search.search import search
+# from components.pages.Settings.settings import settings
+# from components.pages.Unbox.unbox import unbox
+
+from components.pages.TestTemplate.contentTemplate import test
 
 class App(QMainWindow):
     
@@ -16,6 +24,9 @@ class App(QMainWindow):
         
         # self.toolBarLayout = QVBoxLayout()
         # self.mainScreenLayout = QHBoxLayout()
+        
+        self.__mainContentLayout = QStackedLayout()
+        self.__mainContent = QWidget()
         
         titleBar = self.__buildTitleBar()
         mainSection = self.__buildMainSection()
@@ -38,7 +49,7 @@ class App(QMainWindow):
         self.setMinimumSize(width/2, height/2)
         
     def __buildTitleBar(self) -> QWidget:
-        
+            
         titleBar = QWidget()
         titleBarLayout = QHBoxLayout()
         titleBarLayout.setContentsMargins(0, 0, 0, 0)
@@ -76,52 +87,71 @@ class App(QMainWindow):
         
         SideBar = sideBar()
         sideButtons = SideBar.sideButtons
-        sideButtons["Menu"].clicked.connect(self.openMenuPage)
-        sideButtons["Home"].clicked.connect(self.openHomePage)
-        sideButtons["News"].clicked.connect(self.openNewsPage)
-        sideButtons["Search"].clicked.connect(self.openSearchPage)
-        sideButtons["Build"].clicked.connect(self.openBuildPage)
-        sideButtons["Unbox"].clicked.connect(self.openUnboxPage)
-        sideButtons["Settings"].clicked.connect(self.openSettingsPage)
+        sideButtons["Menu"].clicked.connect(self.__openMenuPage)
+        sideButtons["Home"].clicked.connect(self.__openHomePage)
+        sideButtons["News"].clicked.connect(self.__openNewsPage)
+        sideButtons["Search"].clicked.connect(self.__openSearchPage)
+        sideButtons["Build"].clicked.connect(self.__openBuildPage)
+        sideButtons["Unbox"].clicked.connect(self.__openUnboxPage)
+        sideButtons["Settings"].clicked.connect(self.__openSettingsPage)
         
-        label2 = QLabel("Main Content")
-        label2.setStyleSheet(borderHighlight())
+        # label2 = QLabel("Main Content")
+        # label2.setStyleSheet(borderHighlight())
+        self.__preloadProcedure()
         
+        self.__mainContent.setLayout(self.__mainContentLayout)
         mainSectionLayout.addWidget(SideBar)
-        mainSectionLayout.addWidget(label2)
+        mainSectionLayout.addWidget(self.__mainContent)
         
         mainSection.setLayout(mainSectionLayout)
         
         return mainSection
     
-    def openMenuPage(self):
+    def __preloadProcedure(self):
         
-        print("Opening Menu.")
+        menuPage = test("red")
+        homePage = test("blue")
+        newsPage = test("yellow")
+        searchPage = test("orange")
+        buildPage = test("green")
+        unboxPage = test("blue")
+        settingsPage = test("purple")
         
-    def openHomePage(self):
-        
-        print("Opening Home.")
-        
-    def openNewsPage(self):
-        
-        print("Opening News.")
-        
-    def openSearchPage(self):
-        
-        print("Opening Search.")
-        
-    def openBuildPage(self):
-        
-        print("Opening Build.")
-        
-    def openUnboxPage(self):
-        
-        print("Opening Unbox.")
-        
-    def openSettingsPage(self):
-        
-        print("Opening Settings.")
+        self.__mainContentLayout.addWidget(menuPage.getWidget())
+        self.__mainContentLayout.addWidget(homePage.getWidget())
+        self.__mainContentLayout.addWidget(newsPage.getWidget())
+        self.__mainContentLayout.addWidget(searchPage.getWidget())
+        self.__mainContentLayout.addWidget(buildPage.getWidget())
+        self.__mainContentLayout.addWidget(unboxPage.getWidget())
+        self.__mainContentLayout.addWidget(settingsPage.getWidget())
     
+    def __openMenuPage(self):
+        
+        self.__mainContentLayout.setCurrentIndex(0)
+        
+    def __openHomePage(self):
+        
+        self.__mainContentLayout.setCurrentIndex(1)
+        
+    def __openNewsPage(self):
+        
+        self.__mainContentLayout.setCurrentIndex(2)
+        
+    def __openSearchPage(self):
+        
+        self.__mainContentLayout.setCurrentIndex(3)
+        
+    def __openBuildPage(self):
+        
+        self.__mainContentLayout.setCurrentIndex(4)
+        
+    def __openUnboxPage(self):
+        
+        self.__mainContentLayout.setCurrentIndex(5)
+        
+    def __openSettingsPage(self):
+        
+        self.__mainContentLayout.setCurrentIndex(6)
     
     ###############################################################################################
     # Resized event ready for experimentation with custom flexbox. As of right now there is no    
