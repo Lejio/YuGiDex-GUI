@@ -10,40 +10,41 @@ class sideBar(QWidget):
         self.barLayout = QVBoxLayout()
         self.setFixedWidth(150)
 
-        # self.container = QWidget()
-        self.buildBar()
+        self.container = QWidget()
+        self.sideButtons = {}
+        self.__buildBar()
                 
-    def buildBar(self):
+    def __buildBar(self):
         
-        menu = sideBarButton("Menu")
-        home = sideBarButton("Home")
-        news = sideBarButton("News")
-        search = sideBarButton("Search")
-        build = sideBarButton("Build")
-        unpack = sideBarButton("Unbox")
-        settings = sideBarButton("Settings")
+        self.__buildButtons()
         
-        self.barLayout.setAlignment(Qt.AlignmentFlag.AlignTop)
+        self.container.setLayout(self.barLayout)
         
-        self.barLayout.addWidget(menu)
-        self.barLayout.addWidget(home)
-        self.barLayout.addWidget(news)
-        self.barLayout.addWidget(search)
-        self.barLayout.addWidget(build)
-        self.barLayout.addWidget(unpack)
-        self.barLayout.addWidget(settings)
+        self.layoutContainer = QVBoxLayout()
+        self.layoutContainer.setContentsMargins(0, 0, 0, 0)
+        self.container.setStyleSheet(sideBarStyle())
         
-        # self.container.setLayout(self.barLayout)
+        self.layoutContainer.addWidget(self.container)
         
-        # self.layoutContainer = QVBoxLayout()
-        # self.container.setStyleSheet(sideBarStyle())
+        self.setLayout(self.layoutContainer)
+        
+        
+    def __buildButtons(self):
+        
+        self.sideButtons["Menu"] = sideBarButton("Menu")
+        self.sideButtons["Home"] = sideBarButton("Home")
+        self.sideButtons["News"] = sideBarButton("News")
+        self.sideButtons["Search"] = sideBarButton("Search")
+        self.sideButtons["Build"] = sideBarButton("Build")
+        self.sideButtons["Unbox"] = sideBarButton("Unbox")
+        self.sideButtons["Settings"] = sideBarButton("Settings")
+                
+        self.barLayout.addWidget(self.sideButtons["Menu"])
+        self.barLayout.addWidget(self.sideButtons["Home"])
+        self.barLayout.addWidget(self.sideButtons["News"])
+        self.barLayout.addWidget(self.sideButtons["Search"])
+        self.barLayout.addWidget(self.sideButtons["Build"])
+        self.barLayout.addWidget(self.sideButtons["Unbox"])
+        self.barLayout.addWidget(self.sideButtons["Settings"])
 
-        
-        # self.layoutContainer.addWidget(self.container)
-        
-        # self.setLayout(self.layoutContainer)
-        
-        self.setLayout(self.barLayout)
-                
-    
-    
+        self.barLayout.setAlignment(Qt.AlignmentFlag.AlignTop)

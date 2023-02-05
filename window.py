@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QMainWindow, QVBoxLayout, QHBoxLayout, QWidget, QLabel
+from PySide6.QtWidgets import QMainWindow, QVBoxLayout, QHBoxLayout, QWidget, QLabel, QStackedWidget
 from components.titleButton import titleButton
 from components.sideBar import sideBar
 from components.styles.default import *
@@ -20,6 +20,7 @@ class App(QMainWindow):
         titleBar = self.__buildTitleBar()
         mainSection = self.__buildMainSection()
         
+        # Main layout consists of both the scroll bar and the content area.
         self.__mainLayout.addWidget(titleBar)
         self.__mainLayout.addWidget(mainSection)
         
@@ -74,6 +75,15 @@ class App(QMainWindow):
         mainSectionLayout.setSpacing(0)
         
         SideBar = sideBar()
+        sideButtons = SideBar.sideButtons
+        sideButtons["Menu"].clicked.connect(self.openMenuPage)
+        sideButtons["Home"].clicked.connect(self.openHomePage)
+        sideButtons["News"].clicked.connect(self.openNewsPage)
+        sideButtons["Search"].clicked.connect(self.openSearchPage)
+        sideButtons["Build"].clicked.connect(self.openBuildPage)
+        sideButtons["Unbox"].clicked.connect(self.openUnboxPage)
+        sideButtons["Settings"].clicked.connect(self.openSettingsPage)
+        
         label2 = QLabel("Main Content")
         label2.setStyleSheet(borderHighlight())
         
@@ -83,6 +93,34 @@ class App(QMainWindow):
         mainSection.setLayout(mainSectionLayout)
         
         return mainSection
+    
+    def openMenuPage(self):
+        
+        print("Opening Menu.")
+        
+    def openHomePage(self):
+        
+        print("Opening Home.")
+        
+    def openNewsPage(self):
+        
+        print("Opening News.")
+        
+    def openSearchPage(self):
+        
+        print("Opening Search.")
+        
+    def openBuildPage(self):
+        
+        print("Opening Build.")
+        
+    def openUnboxPage(self):
+        
+        print("Opening Unbox.")
+        
+    def openSettingsPage(self):
+        
+        print("Opening Settings.")
     
     
     ###############################################################################################
