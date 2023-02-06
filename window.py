@@ -95,8 +95,6 @@ class App(QMainWindow):
         sideButtons["Unbox"].clicked.connect(self.__openUnboxPage)
         sideButtons["Settings"].clicked.connect(self.__openSettingsPage)
         
-        # label2 = QLabel("Main Content")
-        # label2.setStyleSheet(borderHighlight())
         self.__preloadProcedure()
         
         self.__mainContent.setLayout(self.__mainContentLayout)
