@@ -10,6 +10,7 @@ from components.styles.default import *
 # from components.pages.Unbox.unbox import unbox
 
 from components.pages.TestTemplate.contentTemplate import test
+from components.pages.TestTemplate.widgetStackTemplate import stack
 
 class App(QMainWindow):
     
