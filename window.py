@@ -1,11 +1,13 @@
 from PySide6.QtWidgets import QMainWindow, QVBoxLayout, QHBoxLayout, QWidget, QLabel, QStackedLayout
+from PySide6.QtGui import QFontDatabase
+
 from components.titleButton import titleButton
 from components.sideBar import sideBar
 from components.styles.default import *
 # from components.pages.Build.build import build
-# from components.pages.Home.home import home
-# from components.pages.News.news import news
-# from components.pages.Search.search import search
+from components.pages.Home.home import home
+from components.pages.News.news import news
+from components.pages.Search.search import search
 # from components.pages.Settings.settings import settings
 # from components.pages.Unbox.unbox import unbox
 
@@ -27,6 +29,8 @@ class App(QMainWindow):
         # self.mainScreenLayout = QHBoxLayout()
         
         self.__mainContentLayout = QStackedLayout()
+        # self.__mainContentLayout.setContentsMargins(0, 0, 0, 0)
+        # self.__mainContentLayout.setSpacing(0)
         self.__mainContent = QWidget()
         
         titleBar = self.__buildTitleBar()
@@ -109,9 +113,13 @@ class App(QMainWindow):
     def __preloadProcedure(self):
         
         menuPage = test("red")
-        homePage = test("blue")
-        newsPage = test("yellow")
-        searchPage = test("orange")
+        homePage = home()
+        newsPage = news()
+        
+        searchPage = search()
+        self.searchButton = searchPage.getSearchButton()
+        self.searchButton.clicked.connect(self.__processSearch)
+        
         buildPage = test("green")
         unboxPage = test("blue")
         settingsPage = test("purple")
@@ -126,31 +134,42 @@ class App(QMainWindow):
     
     def __openMenuPage(self):
         
-        self.__mainContentLayout.setCurrentIndex(0)
+        # self.__mainContentLayout.setCurrentIndex(0)
+        print(QFontDatabase.families())
         
     def __openHomePage(self):
         
+        print("Home")
         self.__mainContentLayout.setCurrentIndex(1)
         
     def __openNewsPage(self):
         
+        print("News")
         self.__mainContentLayout.setCurrentIndex(2)
         
     def __openSearchPage(self):
         
+        print("Search")
         self.__mainContentLayout.setCurrentIndex(3)
         
     def __openBuildPage(self):
         
+        print("Build")
         self.__mainContentLayout.setCurrentIndex(4)
         
     def __openUnboxPage(self):
         
+        print("Unbox")
         self.__mainContentLayout.setCurrentIndex(5)
         
     def __openSettingsPage(self):
         
+        print("Settings")
         self.__mainContentLayout.setCurrentIndex(6)
+        
+    def __processSearch(self):
+        
+        print("Processing Search.")
     
     ###############################################################################################
     # Resized event ready for experimentation with custom flexbox. As of right now there is no    

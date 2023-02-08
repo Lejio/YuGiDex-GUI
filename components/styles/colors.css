@@ -1,0 +1,12 @@
+
+* {
+    --pale-azure: #97dffcff;
+    --tropical-indigo: #858ae3ff;
+    --iris: #613dc1ff;
+    --indigo: #4e148cff;
+    --russian-violet: #2c0735ff;
+}
+
+* {
+    background-color: transparent;
+}
