@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import QPushButton
-from PySide6.QtCore import QEvent
+from PySide6.QtCore import QPropertyAnimation, QPoint
 from components.styles.searchStyle import buttonStyle
 
 class searchButton(QPushButton):
@@ -13,9 +13,14 @@ class searchButton(QPushButton):
         # self.clicked.connect(self.processSearch)
         
     
-    def mousePressEvent(self, e):
+    # def mousePressEvent(self, e):
         
-        print("Pressed")
+    #     print("Starting animation.")
+    #     self.anim = QPropertyAnimation(self.child, b"color")
+        # self.anim.setEasingCurve(easing=)
+        # self.anim.setEndValue(QPoint(400, 400))
+        # self.anim.setDuration(1500)
+        # self.anim.start()
         
     # def processSearch(self):
         

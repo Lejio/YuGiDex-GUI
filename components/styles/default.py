@@ -1,15 +1,20 @@
 
 def borderHighlight():
     
-    return """
-border: 1px solid #F5D491;
-"""
+    return ""
 
 def defaultBackground():
     
     return """
 background-color: gray;
+border: 1px solid black;
 """
+
+# def defaultBackground():
+    
+#     return """
+# background-color: gray;
+# """
 
 def titleBarStyle():
     
