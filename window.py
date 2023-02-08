@@ -115,7 +115,7 @@ class App(QMainWindow):
         menuPage = test("red")
         homePage = home()
         newsPage = news()
-        newsPage.buildContent()
+        # newsPage.buildContent()
         
         searchPage = search()
         # self.searchButton = searchPage.getSearchButton()
@@ -127,7 +127,7 @@ class App(QMainWindow):
         
         self.__mainContentLayout.addWidget(menuPage.getWidget())
         self.__mainContentLayout.addWidget(homePage.getWidget())
-        self.__mainContentLayout.addWidget(newsPage.getWidget())
+        self.__mainContentLayout.addWidget(newsPage)
         self.__mainContentLayout.addWidget(searchPage.getWidget())
         self.__mainContentLayout.addWidget(buildPage.getWidget())
         self.__mainContentLayout.addWidget(unboxPage.getWidget())

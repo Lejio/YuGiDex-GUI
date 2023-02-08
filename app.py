@@ -19,6 +19,11 @@ if __name__ == "__main__":
     
     # Starts the App.
     w = App(app_x, app_y, app_width, app_height)
+    # w.setStyleSheet("""
+    #                 * {
+    #                     border: 1px solid black;
+    #                 }
+    #                 """)
     w.show()
     
     # "Full" screen on mac
