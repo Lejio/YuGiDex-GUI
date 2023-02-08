@@ -5,9 +5,6 @@ from components.styles.searchStyle import *
 
 class search:
     
-    # Current issue with with search button.
-    # The 
-    
     def __init__(self) -> None:
         
         self.__layout = QHBoxLayout();
@@ -30,10 +27,11 @@ class search:
         # self.searchBar.setText("Enter Card Name")
         self.searchBar.setFixedSize(400, 50)
         
-        self.searchButton = searchButton("Search")
-        # self.searchButton.setStyleSheet(buttonStyle())
-        # self.searchButton.clicked.connect(self.__processSearch)
-        # self.searchButton.animateClick()
+        # self.searchButton = searchButton("Search")
+        # self.searchButton = searchButton("Search")
+        self.searchButton = QPushButton("Search")
+        self.searchButton.setStyleSheet(buttonStyle())
+        self.searchButton.clicked.connect(self.__processSearch)
         
         self.searchLabel = QLabel("Yu-Gi-Oh Database")
         self.searchLabel.setStyleSheet(labelStyle())
@@ -41,14 +39,15 @@ class search:
         
         self.mainWidgetLayout = QVBoxLayout()
         self.mainWidgetLayout.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        # self.mainWidgetLayout.setGeometry(500, 50)
+
         self.mainWidgetLayout.addWidget(self.searchLabel)
         self.mainWidgetLayout.addWidget(self.searchBar)
         self.mainWidgetLayout.addWidget(self.searchButton)
-
+        
+        # print("bruh")
         
         self.mainWidget.setLayout(self.mainWidgetLayout)
-        
+
         self.__layout.addWidget(self.mainWidget)
         
     def getSearchButton(self):

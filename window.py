@@ -35,7 +35,7 @@ class App(QMainWindow):
         
         titleBar = self.__buildTitleBar()
         mainSection = self.__buildMainSection()
-        
+                
         # Main layout consists of both the scroll bar and the content area.
         self.__mainLayout.addWidget(titleBar)
         self.__mainLayout.addWidget(mainSection)
@@ -115,10 +115,11 @@ class App(QMainWindow):
         menuPage = test("red")
         homePage = home()
         newsPage = news()
+        newsPage.buildContent()
         
         searchPage = search()
-        self.searchButton = searchPage.getSearchButton()
-        self.searchButton.clicked.connect(self.__processSearch)
+        # self.searchButton = searchPage.getSearchButton()
+        # self.searchButton.clicked.connect(self.__processSearch)
         
         buildPage = test("green")
         unboxPage = test("blue")
